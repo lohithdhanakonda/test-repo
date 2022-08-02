@@ -1,0 +1,23 @@
+<div class="header row justify-content-end info">
+    <p class="m-25">{{currentUser.userEmail|userName}}</p>
+</div>
+<!-- <div>{{allStudents.length}}</div> -->
+<div class="row m-25 justify-content-end">
+    <a routerLink="/enroll">Enroll a Student</a>
+</div>
+<table class="table">
+    <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Date of Birth</td>
+        <td>Family Income</td>
+        <td>Total Marks</td>
+    </tr>
+    <tr *ngFor="let student of allStudents">
+        <td>{{student.studentName}}</td>
+        <td>{{student.studentEmail}}</td>
+        <td>{{student.studentDob}}</td>
+        <td>{{student.familyIncome|currency:"INR":"symbol"}}</td>
+        <td appResult={{student.totalMarks}}>{{student.totalMarks}}</td>
+    </tr>
+</table>

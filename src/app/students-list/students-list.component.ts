@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { createSelector, Store } from '@ngrx/store';
 import { InitialState } from '@ngrx/store/src/models';
-import { getAllStudentDetails } from '../store/app.actions';
+import { getAllStudentDetails, setLoader } from '../store/app.actions';
 import { AppState, Student, User } from '../store/app.models';
 import { allStudentData, userData } from '../store/app.selectors';
 
@@ -27,6 +27,7 @@ export class StudentsListComponent implements OnInit {
     // this.store.select((state: AppState) => state.currentUser).subscribe(result => {
     //   this.currentUser = result
     // })
+    this.store.dispatch(setLoader({ isLoading: true }))
     this.store.dispatch({ type: "[Student List] All Student Details" })
     this.store.select(userData).subscribe(
       result => {

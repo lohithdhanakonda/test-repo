@@ -15,5 +15,6 @@ export class StudentEffects {
         mergeMap(() => this.studentService.getAllStudents().pipe(map(_student => ({
             type: "[Student List] Set All Student Details",
             students: _student.students
-        })), catchError(() => EMPTY)))))
+        })),
+            catchError(() => EMPTY)))))
 }

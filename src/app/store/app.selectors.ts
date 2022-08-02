@@ -10,6 +10,7 @@ export const studentSelector = createFeatureSelector<AppState>("student")
 
 //user data
 export const userData = createSelector(appSelector, (state: AppState) => state.currentUser)
+export const isLoading = createSelector(appSelector, (state: AppState) => state.isLoading)
 
 //students data
 export const studentData = createSelector(studentSelector, (state: AppState) => state.currentStudent)

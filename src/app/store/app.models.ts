@@ -17,5 +17,6 @@ export interface Subject {
 export interface AppState {
     currentUser: User,
     currentStudent: Student,
-    allStudents: Student[]
+    allStudents: Student[],
+    isLoading: Boolean
 }

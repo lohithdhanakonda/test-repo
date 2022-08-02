@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { getAllStudentDetails, setAllStudentDetails, setCurrentStudent, setCurrentUser } from "./app.actions";
+import { getAllStudentDetails, setAllStudentDetails, setCurrentStudent, setCurrentUser, setLoader } from "./app.actions";
 import { AppState } from "./app.models";
 
 export const initialState: AppState = {
@@ -13,7 +13,8 @@ export const initialState: AppState = {
             { title: "", marks: 0 }
         ]
     },
-    allStudents: []
+    allStudents: [],
+    isLoading: false
 }
 // export const appReducer = (initialState, action: Action) => {
 //     switch (action.type) {
@@ -39,8 +40,13 @@ export const studentReducer = createReducer(initialState,
         }
     }),
     on(setAllStudentDetails, (state, { students }) => {
-        debugger
         return {
             ...state, allStudents: students
+        }
+    }),
+    on(setLoader, (state, { isLoading }) => {
+        return {
+            //ques: how can write to set and fetching only a bool value
+            ...state, isLoading
         }
     }))

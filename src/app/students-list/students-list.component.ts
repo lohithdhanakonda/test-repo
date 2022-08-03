@@ -3,7 +3,7 @@ import { createSelector, Store } from '@ngrx/store';
 import { InitialState } from '@ngrx/store/src/models';
 import { getAllStudentDetails, setLoader } from '../store/app.actions';
 import { AppState, Student, User } from '../store/app.models';
-import { allStudentData, userData } from '../store/app.selectors';
+import { allStudentData, isLoading, userData } from '../store/app.selectors';
 
 @Component({
   selector: 'app-students-list',
@@ -15,6 +15,7 @@ export class StudentsListComponent implements OnInit {
   constructor(private store: Store) { }
   currentUser: User = { userEmail: "", password: "" }
   allStudents: Student[] = []
+  loaderStatus: Boolean = false;
   // sampleform: Student = {
   //   studentDob: new Date(),
   //   studentEmail: "",
@@ -32,6 +33,11 @@ export class StudentsListComponent implements OnInit {
     this.store.select(userData).subscribe(
       result => {
         this.currentUser = result
+      })
+    this.store.select(isLoading).subscribe(
+      result => {
+        this.loaderStatus = result
+        console.log(this.loaderStatus, " this.loaderStatus")
       })
     this.store.select(allStudentData).subscribe(
       result => {

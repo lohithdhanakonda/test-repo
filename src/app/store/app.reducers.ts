@@ -47,6 +47,6 @@ export const studentReducer = createReducer(initialState,
     on(setLoader, (state, { isLoading }) => {
         return {
             //ques: how can write to set and fetching only a bool value
-            ...state, isLoading
+            ...Object.assign({}, state, isLoading)
         }
     }))

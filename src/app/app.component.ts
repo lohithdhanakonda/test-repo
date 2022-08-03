@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { isLoading } from './store/app.selectors';
 
 @Component({
@@ -13,7 +13,9 @@ export class AppComponent {
   constructor(private store: Store) {
 
   }
-  ngDoCheck() {
-    this.store.select(isLoading).subscribe(val => this.isLoading = val)
+  ngAfterContentInit() {
+    console.log(this.store,"=== this.store")
+    // console.log(this.isLoading,"this.isLoading")
+    this.store.pipe(select(isLoading)).subscribe(val => this.isLoading = val)
   }
 }

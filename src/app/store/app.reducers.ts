@@ -14,7 +14,7 @@ export const initialState: AppState = {
         ]
     },
     allStudents: [],
-    isLoading: false
+    isLoading: true
 }
 // export const appReducer = (initialState, action: Action) => {
 //     switch (action.type) {

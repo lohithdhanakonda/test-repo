@@ -30,7 +30,7 @@ export class StudentsListComponent implements OnInit {
     // })
     this.store.dispatch(startLoader())
 
-    console.log(this.store, "---this store")
+    // console.log(this.store, "---this store")
     this.store.dispatch({ type: "[Student List] All Student Details" })
 
     this.store.select(userData).subscribe(
@@ -44,8 +44,6 @@ export class StudentsListComponent implements OnInit {
         this.store.dispatch(stopLoader())
       }
     )
-
-    console.log(this.store)
   }
   ngOnChanges() {
     this.store.select(allStudentData).subscribe(

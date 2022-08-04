@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { getAllStudentDetails, setAllStudentDetails, setCurrentStudent, setCurrentUser, setLoader } from "./app.actions";
+import { getAllStudentDetails, setAllStudentDetails, setCurrentStudent, setCurrentUser, startLoader, stopLoader } from "./app.actions";
 import { AppState } from "./app.models";
 
 export const initialState: AppState = {
@@ -25,10 +25,18 @@ export const initialState: AppState = {
 export const appReducer = createReducer(initialState, on(setCurrentUser, (state, { userData }) => (
     {
         ...state, currentUser: userData
-    })
-))
-
-export const studentReducer = createReducer(initialState,
+    })),
+    on(startLoader, (state) => {
+        return {
+            //ques: how can write to set and fetching only a bool value
+            ...state, isLoading: true
+        }
+    }),
+    on(stopLoader, (state) => {
+        return {
+            ...state, isLoading: false
+        }
+    }),
     on(setCurrentStudent, (state, { studentData }) => {
         return {
             ...state, currentStudent: studentData, allStudents: [...state.allStudents, studentData]
@@ -43,10 +51,8 @@ export const studentReducer = createReducer(initialState,
         return {
             ...state, allStudents: students
         }
-    }),
-    on(setLoader, (state, { isLoading }) => {
-        return {
-            //ques: how can write to set and fetching only a bool value
-            ...Object.assign({}, state, isLoading)
-        }
-    }))
+    })
+)
+
+// export const studentReducer = createReducer(initialState,
+//     )

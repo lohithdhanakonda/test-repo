@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +11,7 @@ import { StudentsListComponent } from './students-list/students-list.component';
 import { AuthGuardService } from './auth-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { appReducer, studentReducer } from './store/app.reducers';
+import { appReducer } from './store/app.reducers';
 import { SubjectInputComponent } from './subject-input/subject-input.component';
 import { UserNamePipe } from './user-name.pipe';
 import { ResultDirective } from './result.directive';
@@ -37,8 +38,10 @@ import { LoaderComponent } from './loader/loader.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ app: appReducer, student: studentReducer }),
-    EffectsModule.forRoot([StudentEffects])
+    // StoreModule.forRoot({ app: appReducer, student: studentReducer }),
+    StoreModule.forRoot({ app: appReducer }),
+    EffectsModule.forRoot([StudentEffects]),
+    StoreDevtoolsModule.instrument({})
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

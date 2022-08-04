@@ -5,7 +5,7 @@ import { AppState, Student, User } from "./app.models";
 
 
 export const appSelector = createFeatureSelector<AppState>("app")
-export const studentSelector = createFeatureSelector<AppState>("student")
+// export const studentSelector = createFeatureSelector<AppState>("student")
 // export const studentsSelector = createFeatureSelector<AppState>("student")
 
 //user data
@@ -13,5 +13,5 @@ export const userData = createSelector(appSelector, (state: AppState) => state.c
 export const isLoading = createSelector(appSelector, (state: AppState) => state.isLoading)
 
 //students data
-export const studentData = createSelector(studentSelector, (state: AppState) => state.currentStudent)
-export const allStudentData = createSelector(studentSelector, (state: AppState) => state.allStudents)
+export const studentData = createSelector(appSelector, (state: AppState) => state.currentStudent)
+export const allStudentData = createSelector(appSelector, (state: AppState) => state.allStudents)

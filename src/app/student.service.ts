@@ -11,6 +11,6 @@ export class StudentService {
   constructor(private http: HttpClient) { }
   getAllStudents(): Observable<{ students: Student[] }> {
     let studentsList: Student[];
-    return this.http.get<{ students: Student[] }>("https://studentenrollment.free.beeceptor.com/student-list")
+    return this.http.get<{ students: Student[] }>("https://studentenrollment.free.beeceptor.com/students-list")
   }
 }

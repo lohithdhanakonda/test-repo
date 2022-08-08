@@ -7,4 +7,4 @@ export const getAllStudentDetails = createAction("[Student List] All Student Det
 export const setAllStudentDetails = createAction("[Student List] Set All Student Details", props<{ students: Student[] }>())
 // export const setLoader = createAction("[App Level] Set Loading", props<{ isLoading: Boolean }>())
 export const startLoader = createAction("[App Level] Start Loading")
-export const stopLoader = createAction("[App Level] End Loading")
+// export const stopLoader = createAction("[App Level] End Loading")

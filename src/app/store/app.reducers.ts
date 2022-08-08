@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { getAllStudentDetails, setAllStudentDetails, setCurrentStudent, setCurrentUser, startLoader, stopLoader } from "./app.actions";
+import { getAllStudentDetails, setAllStudentDetails, setCurrentStudent, setCurrentUser, startLoader } from "./app.actions";
 import { AppState } from "./app.models";
 
 export const initialState: AppState = {
@@ -32,24 +32,24 @@ export const appReducer = createReducer(initialState, on(setCurrentUser, (state,
             ...state, isLoading: true
         }
     }),
-    on(stopLoader, (state) => {
-        return {
-            ...state, isLoading: false
-        }
-    }),
+    // on(stopLoader, (state) => {
+    //     return {
+    //         ...state, isLoading: false
+    //     }
+    // }),
     on(setCurrentStudent, (state, { studentData }) => {
         return {
-            ...state, currentStudent: studentData, allStudents: [...state.allStudents, studentData]
+            ...state, currentStudent: studentData, allStudents: [...state.allStudents, studentData], isLoading: false
         }
     }),
     on(getAllStudentDetails, (state, { studentsList }) => {
         return {
-            ...state, allStudents: studentsList
+            ...state, allStudents: studentsList, isLoading: false
         }
     }),
     on(setAllStudentDetails, (state, { students }) => {
         return {
-            ...state, allStudents: students
+            ...state, allStudents: students, isLoading: false
         }
     })
 )

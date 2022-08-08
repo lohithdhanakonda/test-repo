@@ -48,18 +48,20 @@ export class StudentsListComponent implements OnInit {
       this.store.select(allStudentData).subscribe(
         result => {
           this.allStudents = result
-          this.changeDetection.detectChanges()
           // this.store.dispatch(stopLoader())
         }
       )
     }
   }
-  ngOnChanges() {
-    this.store.select(allStudentData).subscribe(
-      result => {
-        this.allStudents = result
-      }
-    )
-  }
+ngDoCheck(){
+  this.changeDetection.detectChanges()
+}
+  // ngOnChanges() {
+  //   this.store.select(allStudentData).subscribe(
+  //     result => {
+  //       this.allStudents = result
+  //     }
+  //   )
+  // }
 
 }

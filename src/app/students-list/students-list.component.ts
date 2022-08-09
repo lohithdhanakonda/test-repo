@@ -53,9 +53,9 @@ export class StudentsListComponent implements OnInit {
       )
     }
   }
-ngDoCheck(){
-  this.changeDetection.detectChanges()
-}
+  ngDoCheck() {
+    this.changeDetection.detectChanges()
+  }
   // ngOnChanges() {
   //   this.store.select(allStudentData).subscribe(
   //     result => {
